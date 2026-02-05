@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usluge | Vaša zubarka Jagodina</title>
+  <meta name="description" content="Stomatološke usluge ordinacije Vaša zubarka u Jagodini. 3D snimanje, implanti, estetska stomatologija, ortodoncija, protetika i više.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #c0392b;
+      --red-dark: #a93226;
+      --red-light: #f9ebea;
+      --dark: #1a1a2e;
+      --gray: #5a5a6e;
+      --gray-light: #8a8a9a;
+      --bg: #ffffff;
+      --bg-warm: #faf9f7;
+      --border: #eaeaea;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 2px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+      --font-body: 'Outfit', sans-serif;
+      --font-head: 'Fraunces', serif;
+      --max-w: 1200px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--bg); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--red); }
+    .logo span { color: var(--dark); }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a { font-size: 0.92rem; font-weight: 500; color: var(--gray); }
+    .nav a:hover, .nav a.active { color: var(--red); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; font-family: var(--font-body); font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; line-height: 1; }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 16px rgba(192,57,43,0.3); }
+    .btn-primary:hover { background: var(--red-dark); box-shadow: 0 6px 24px rgba(192,57,43,0.4); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--red); border: 2px solid var(--red); }
+    .btn-outline:hover { background: var(--red); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); transition: var(--transition); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 32px 24px; gap: 8px; z-index: 999; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.1rem; font-weight: 500; color: var(--dark); padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .mobile-nav .btn { margin-top: 16px; text-align: center; justify-content: center; }
+
+    section { padding: 100px 24px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .section-subtitle { font-size: 1.05rem; color: var(--gray); max-width: 560px; line-height: 1.8; }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 140px 24px 80px;
+      background: linear-gradient(135deg, #fff 0%, var(--red-light) 100%);
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: var(--font-head); font-size: 2.8rem;
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .page-hero p {
+      font-size: 1.1rem; color: var(--gray); max-width: 520px;
+      margin: 0 auto 32px; line-height: 1.8;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--red); transform: scaleX(0);
+      transition: var(--transition); transform-origin: left;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--red-light); color: var(--red);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 20px;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+    .service-card p { font-size: 0.92rem; color: var(--gray); line-height: 1.7; }
+
+    /* 3D Section */
+    .special-section {
+      background: var(--dark); padding: 100px 24px;
+    }
+    .special-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center;
+    }
+    .special-inner img {
+      border-radius: var(--radius);
+      width: 100%; height: 400px; object-fit: cover;
+    }
+    .special-text .section-label { color: rgba(255,255,255,0.5); }
+    .special-text h2 {
+      font-family: var(--font-head); font-size: 2.2rem;
+      color: #fff; margin-bottom: 20px; font-weight: 700;
+    }
+    .special-text p { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.8; margin-bottom: 16px; }
+    .btn-white { background: #fff; color: var(--red); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+
+    /* CTA */
+    .cta-banner { background: var(--bg-warm); padding: 80px 24px; text-align: center; }
+    .cta-banner h2 { font-family: var(--font-head); font-size: 2.2rem; margin-bottom: 16px; font-weight: 700; }
+    .cta-banner p { color: var(--gray); font-size: 1.05rem; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .footer { background: var(--dark); padding: 48px 24px; text-align: center; }
+    .footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+    .footer a { color: rgba(255,255,255,0.6); }
+    .footer a:hover { color: #fff; }
+    .footer .credit { margin-top: 8px; }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .page-hero { padding: 120px 24px 60px; }
+      .page-hero h1 { font-size: 2rem; }
+      section { padding: 72px 24px; }
+      .section-title { font-size: 1.9rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .special-inner { grid-template-columns: 1fr; }
+      .special-inner img { height: 280px; }
+      .special-text h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Vaša <span>zubarka</span></a>
+    <nav class="nav">
+      <a href="index.html">Početna</a>
+      <a href="usluge.html" class="active">Usluge</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+381637488985" class="btn btn-primary">Pozovite nas</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Početna</a>
+    <a href="usluge.html">Usluge</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+381637488985" class="btn btn-primary">Pozovite nas</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="section-label">Naše usluge</div>
+  <h1>Sve što vam treba za zdrav osmeh.</h1>
+  <p>Od redovnih pregleda do implantata i estetske medicine. Tim od 4 doktora pokriva sve oblasti stomatologije.</p>
+  <a href="tel:+381637488985" class="btn btn-primary">Zakažite pregled</a>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Konzervativna stomatologija</h3>
+        <p>Lečenje karijesa i popravke zuba najsavremenijim kompozitnim materijalima. Bele plombe koje izgledaju potpuno prirodno.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Endodoncija</h3>
+        <p>Lečenje kanala korena zuba. Bezbolno, precizno, sa ciljem da se zub sačuva kad god je to moguće.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Parodontologija</h3>
+        <p>Lečenje desni i potpornog aparata zuba. Uklanjanje kamenca, duboko čišćenje, terapija parodontopatije.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Izbeljvanje zuba</h3>
+        <p>Profesionalno izbeljvanje za vidljivo belji osmeh. Jedna poseta, rezultat koji traje mesecima.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>Protetika</h3>
+        <p>Krunice, mostovi, proteze. Metalokeramika i bezmetalna keramika (cirkonijum) za savršen izgled i funkciju.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Dečja stomatologija</h3>
+        <p>Nežan pristup najmlađim pacijentima. Preventivni pregledi, zalivanje fisura, navikavanje na stomatologa od malih nogu.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Ortodoncija</h3>
+        <p>Ispravljanje položaja zuba i vilica. Mobilni aparati za decu, fiksne proteze za odrasle.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Oralna hirurgija i implantologija</h3>
+        <p>Vađenje zuba, apikotomija, ugradnja implantata. 3D snimak omogućava precizno planiranje svake intervencije.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>Estetska medicina</h3>
+        <p>Hijaluronski fileri, neuromodulatori, PRP tehnika, mezoniti, hemijski pilinzi. Dr Miljana Stanković, sertifikovana za anti-aging procedure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3D SPECIAL -->
+<section class="special-section">
+  <div class="special-inner">
+    <img src="photos/photo_05.jpg" alt="3D dijagnostika u ordinaciji Vaša zubarka Jagodina" loading="lazy">
+    <div class="special-text">
+      <div class="section-label">Naš adut</div>
+      <h2>3D i ortopan snimanje. Na licu mesta.</h2>
+      <p>Sirona Orthophos XG 3D je aparat koji daje trodimenzionalni prikaz svih struktura zuba i vilica. Ono što klasični 2D snimak ne može da pokaže, 3D snimak otkriva u detalju.</p>
+      <p>To znači precizniju dijagnozu, bolji plan terapije i sigurniji rezultat. Posebno važno za implante, hirurške zahvate i složenije slučajeve.</p>
+      <a href="tel:+381637488985" class="btn btn-white" style="margin-top:16px;">Zakažite 3D snimak</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Niste sigurni koja usluga vam treba?</h2>
+  <p>Pozovite nas. Zakazaćemo pregled, utvrditi stanje i predložiti najbolji plan terapije za vas.</p>
+  <a href="tel:+381637488985" class="btn btn-primary">Pozovite 063/748-8985</a>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Vaša zubarka. Sva prava zadržana.</p>
+  <p class="credit"><small>Sajt napravio <a href="https://nikolajanjic.com" target="_blank">Nikola Janjić</a></small></p>
+</footer>
+
+<script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+</script>
+</body>
+</html>
