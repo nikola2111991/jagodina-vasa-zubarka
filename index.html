@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaša zubarka | Stomatološka ordinacija Jagodina</title>
+  <meta name="description" content="Stomatološka ordinacija Vaša zubarka u Jagodini. 4.8 na Google-u, 128 recenzija. 3D i ortopan snimanje zuba. Dr Milena Aleksić i tim. Zakažite pregled.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #c0392b;
+      --red-dark: #a93226;
+      --red-light: #f9ebea;
+      --red-glow: rgba(192, 57, 43, 0.08);
+      --dark: #1a1a2e;
+      --gray: #5a5a6e;
+      --gray-light: #8a8a9a;
+      --bg: #ffffff;
+      --bg-warm: #faf9f7;
+      --bg-card: #ffffff;
+      --border: #eaeaea;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 2px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+      --font-body: 'Outfit', sans-serif;
+      --font-head: 'Fraunces', serif;
+      --max-w: 1200px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--dark);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .header-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 24px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-head); font-size: 1.35rem; font-weight: 700;
+      color: var(--red);
+    }
+    .logo span { color: var(--dark); }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a {
+      font-size: 0.92rem; font-weight: 500; color: var(--gray);
+      position: relative;
+    }
+    .nav a:hover { color: var(--red); }
+    .nav a.active { color: var(--red); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 50px;
+      font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      border: none; line-height: 1;
+    }
+    .btn-primary {
+      background: var(--red); color: #fff;
+      box-shadow: 0 4px 16px rgba(192,57,43,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      box-shadow: 0 6px 24px rgba(192,57,43,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent; color: var(--red);
+      border: 2px solid var(--red);
+    }
+    .btn-outline:hover {
+      background: var(--red); color: #fff;
+    }
+    .btn-white {
+      background: #fff; color: var(--red);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); transition: var(--transition); border-radius: 2px; }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column; padding: 32px 24px; gap: 8px;
+      z-index: 999;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1.1rem; font-weight: 500; color: var(--dark);
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav .btn { margin-top: 16px; text-align: center; justify-content: center; }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 120px 24px 80px;
+      background: linear-gradient(135deg, #fff 0%, var(--red-light) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(192,57,43,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 500; color: var(--gray);
+      margin-bottom: 24px; box-shadow: var(--shadow);
+    }
+    .hero-badge .star { color: #f1c40f; font-size: 1rem; }
+    .hero h1 {
+      font-family: var(--font-head); font-size: 3.2rem;
+      line-height: 1.15; font-weight: 700; color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      color: var(--red); font-style: italic;
+    }
+    .hero p {
+      font-size: 1.1rem; color: var(--gray); line-height: 1.8;
+      margin-bottom: 32px; max-width: 480px;
+    }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%; height: 480px; object-fit: cover;
+    }
+    .hero-image-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px; border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+    }
+    .hero-image-badge .number {
+      font-family: var(--font-head); font-size: 1.6rem;
+      font-weight: 700; color: var(--red);
+    }
+    .hero-image-badge .label {
+      font-size: 0.8rem; color: var(--gray);
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 24px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.82rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--red); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head); font-size: 2.4rem;
+      font-weight: 700; line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--gray); max-width: 560px;
+      line-height: 1.8;
+    }
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-subtitle { margin: 0 auto; }
+
+    /* ===== STATS BAR ===== */
+    .stats {
+      padding: 0 24px;
+      margin-top: -40px;
+      position: relative;
+      z-index: 10;
+    }
+    .stats-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      background: var(--dark);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: var(--font-head); font-size: 2.4rem;
+      font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+    /* ===== BENEFITS ===== */
+    .benefits { background: var(--bg-warm); }
+    .benefits-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .benefit-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .benefit-card img {
+      width: 100%; height: 220px; object-fit: cover;
+    }
+    .benefit-card-body { padding: 28px; }
+    .benefit-card h3 {
+      font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;
+    }
+    .benefit-card p {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.7;
+    }
+
+    /* ===== PROCESS ===== */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+      text-align: center;
+    }
+    .process-step .step-num {
+      width: 64px; height: 64px;
+      background: var(--red); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-size: 1.4rem; font-weight: 700;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(192,57,43,0.3);
+    }
+    .process-step h3 {
+      font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;
+    }
+    .process-step p {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.7;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews { background: var(--bg-warm); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .review-card:hover { box-shadow: var(--shadow-lg); }
+    .review-stars { color: #f1c40f; font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text {
+      font-size: 0.95rem; color: var(--gray); line-height: 1.8;
+      margin-bottom: 20px; font-style: italic;
+    }
+    .review-author {
+      font-weight: 600; font-size: 0.92rem; color: var(--dark);
+    }
+    .review-source { font-size: 0.8rem; color: var(--gray-light); }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: var(--dark);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-head); font-size: 2.2rem;
+      color: #fff; margin-bottom: 16px; font-weight: 700;
+    }
+    .cta-banner p {
+      color: rgba(255,255,255,0.6); font-size: 1.05rem;
+      margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .cta-banner .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%; background: none; border: none;
+      padding: 24px 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--font-body); font-size: 1.05rem; font-weight: 500;
+      color: var(--dark); text-align: left;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-icon {
+      font-size: 1.4rem; font-weight: 300; color: var(--red);
+      transition: var(--transition);
+      flex-shrink: 0; margin-left: 16px;
+    }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 24px 0;
+      font-size: 0.95rem; color: var(--gray); line-height: 1.8;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark); padding: 48px 24px;
+      text-align: center;
+    }
+    .footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+    .footer a { color: rgba(255,255,255,0.6); }
+    .footer a:hover { color: #fff; }
+    .footer .credit { margin-top: 8px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2.6rem; }
+      .hero-image img { height: 400px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-image img { height: 320px; }
+
+      .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 32px; gap: 24px; }
+      .stat-number { font-size: 2rem; }
+
+      section { padding: 72px 24px; }
+      .section-title { font-size: 1.9rem; }
+
+      .benefits-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .cta-banner h2 { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { justify-content: center; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Vaša <span>zubarka</span></a>
+    <nav class="nav">
+      <a href="index.html" class="active">Početna</a>
+      <a href="usluge.html">Usluge</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+381637488985" class="btn btn-primary">Pozovite nas</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Početna</a>
+    <a href="usluge.html" onclick="toggleMobileNav()">Usluge</a>
+    <a href="o-nama.html" onclick="toggleMobileNav()">O nama</a>
+    <a href="kontakt.html" onclick="toggleMobileNav()">Kontakt</a>
+    <a href="tel:+381637488985" class="btn btn-primary" onclick="toggleMobileNav()">Pozovite nas</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="star">&#9733;</span> 4.8 na Google-u &nbsp;|&nbsp; 128 recenzija
+      </div>
+      <h1>Ordinacija kojoj Jagodina <em>veruje.</em></h1>
+      <p>128 pacijenata je ostavilo recenziju. 4.8 od 5 na Google-u. 3D dijagnostika i tim od 4 doktora na jednom mestu. Zakažite pregled i uverite se sami.</p>
+      <div class="hero-buttons">
+        <a href="tel:+381637488985" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          063/748-8985
+        </a>
+        <a href="usluge.html" class="btn btn-outline">Pogledajte usluge</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="photos/photo_07.jpg" alt="Moderna čekaonica ordinacije Vaša zubarka u Jagodini" loading="eager">
+      <div class="hero-image-badge">
+        <div class="number">3D</div>
+        <div class="label">dijagnostika na licu mesta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">4.8</div>
+      <div class="stat-label">Google ocena</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">128</div>
+      <div class="stat-label">recenzija pacijenata</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">4</div>
+      <div class="stat-label">doktora u timu</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3D</div>
+      <div class="stat-label">snimanje zuba i vilica</div>
+    </div>
+  </div>
+</div>
+
+<!-- ZAŠTO MI -->
+<section class="benefits">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">Zašto pacijenti biraju Vašu zubarku</div>
+      <h2 class="section-title">Ono što naši pacijenti najčešće kažu</h2>
+      <p class="section-subtitle">Analizirali smo 128 recenzija na Google-u. Evo šta se ponavlja.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <img src="photos/photo_01.jpg" alt="Dr Milena Aleksić sa pacijentom u ordinaciji Vaša zubarka" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Bezbolne intervencije</h3>
+          <p>Jelena je napisala: „Svaku intervenciju obavlja bezbolno i sa puno pažnje." Dolazi iz drugog grada, već godinama.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="photos/photo_06.jpg" alt="Tim ordinacije Vaša zubarka analizira rendgenski snimak" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Sve objašnjeno pre početka</h3>
+          <p>Aleksandar je napisao: „Dr Miljana sve objašnjava jasno, sa puno strpljenja i poštovanja prema pacijentu."</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="photos/photo_05.jpg" alt="3D dijagnostika u ordinaciji Vaša zubarka" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>3D dijagnostika na licu mesta</h3>
+          <p>Sirona Orthophos XG 3D aparat za najdetaljniji prikaz zuba i vilica. Kompletna dijagnostika i terapija na jednom mestu.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="photos/photo_02.jpg" alt="Stomatološka usluga u ordinaciji Vaša zubarka Jagodina" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Pacijent, ne broj</h3>
+          <p>Aleksandar je napisao: „Sa njom se zaista osećate kao osoba, a ne kao broj. Bezbolni tretmani, estetski savršeni rezultati."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCES -->
+<section>
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">Kako izgleda poseta</div>
+      <h2 class="section-title">Tri koraka do osmeha</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Pozovite nas</h3>
+        <p>Zakažemo termin koji vam odgovara. Radimo od ponedeljka do petka, prepodne i popodne.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Pregled i plan</h3>
+        <p>3D snimak daje potpunu sliku. Doktor objašnjava svaki korak pre nego što počne.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Rezultat</h3>
+        <p>Odlazite sa osmehom. 128 pacijenata na Google-u potvrđuje da vredi doći.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="tel:+381637488985" class="btn btn-primary">Zakažite pregled</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECENZIJE -->
+<section class="reviews">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">Google recenzije</div>
+      <h2 class="section-title">Šta kažu naši pacijenti</h2>
+      <p class="section-subtitle">Prave recenzije sa Google-a. Bez filtera, bez korekcija.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">„Definitvno najbolja zubna ordinacija u Jagodini. Doktorka Milena izuzetan profesionalac u svom poslu. Preporučujem!"</p>
+        <div class="review-author">Stefan Milanović</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">„Doktorka Milena je fantastična! Nežna, pažljiva, uviđajna i ono najbitnije, stručna! Redovan sam pacijent i ostajem pri ovom izboru."</p>
+        <div class="review-author">Silvija Jevtić</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">„Već nekoliko godina dolazim iz drugog grada kod dr Milene. Izuzetno je profesionalna, posvećena i strpljiva, a svaku intervenciju obavlja bezbolno."</p>
+        <div class="review-author">Jelena Gligorijević</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="https://maps.google.com/?cid=11534110778344200121" target="_blank" class="btn btn-outline">Pročitajte sve recenzije na Google-u</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">Česta pitanja</div>
+      <h2 class="section-title">Imate pitanje? Verovatno imamo odgovor.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Da li intervencije bole?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Većina naših pacijenata kaže da nije osetila ništa. Koristimo najsavremenije metode anestezije. Jelena Gligorijevic je napisala na Google-u: „Svaku intervenciju obavlja bezbolno i sa puno pažnje."</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Šta je 3D snimanje zuba?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">3D snimanje (CBCT) daje trodimenzionalni prikaz zuba, kostiju i okolnih struktura. Koristimo Sirona Orthophos XG 3D aparat. Ovaj snimak je nezamenljiv za planiranje implantata, hirurških zahvata i složenijih terapija. Možete ga uraditi direktno kod nas.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Koje usluge nudite?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Nudimo kompletnu stomatološku uslugu: popravke zuba, endodoncija (lečenje kanala), parodontologija, izbeljvanje, protetika (krunice, mostovi, proteze), dečja stomatologija, ortodoncija, oralna hirurgija, implantologija i estetska medicina.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Kakvo je radno vreme?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Radimo od ponedeljka do petka, u dve smene: prepodne od 9:00 do 13:00 i popodne od 17:00 do 20:00. Za zakazivanje pozovite 063/748-8985.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Gde se nalazite?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Nalazimo se u centru Jagodine, na adresi Kapetana Koče 10/5-6. Lako je dostupno, blizu centra grada. Pogledajte nas na Google Maps-u za tačne pravce.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Zakažite pregled danas.</h2>
+  <p>Pozovite nas ili pišite na WhatsApp. Odgovaramo brzo, zakazujemo još brže.</p>
+  <div class="btn-group">
+    <a href="tel:+381637488985" class="btn btn-white">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Pozovite 063/748-8985
+    </a>
+    <a href="https://wa.me/381637488985" target="_blank" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.3);">Pišite na WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 Vaša zubarka. Sva prava zadržana.</p>
+  <p class="credit"><small>Sajt napravio <a href="https://nikolajanjic.com" target="_blank">Nikola Janjić</a></small></p>
+</footer>
+
+<script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
